@@ -22,7 +22,7 @@ genai.configure(api_key=GEMINI_API_KEY)
 # System prompt for the public-facing chatbot
 SYSTEM_PROMPT = os.getenv("SYSTEM_PROMPT")
 
-model = genai.GenerativeModel("Gemini 2.5 Flash-Lite", system_instruction=SYSTEM_PROMPT)
+model = genai.GenerativeModel("gemini-2.5-flash-lite", system_instruction=SYSTEM_PROMPT)
 
 # --- Database Setup ---
 DB_PATH = "chat_history.db"
@@ -115,3 +115,4 @@ def chat():
 if __name__ == '__main__':
 
     app.run(port=5000, debug=True)
+
