@@ -32,7 +32,7 @@ def save_message(user_id, role, content):
     conn.commit()
 
 def load_history(user_id, limit=10):
-    cur.execute("SELECT role, content FROM conversations WHERE user_id = ? ORDER BY id DESC LIMIT ?", (user_id,))
+    cur.execute("SELECT role, content FROM conversations WHERE user_id = ? ORDER BY id DESC LIMIT ?", (user_id, limit))
     rows = cur.fetchall()
     return [{"role": r, "parts": [c]} for r, c in reversed(rows)]
 
@@ -92,3 +92,4 @@ def chat():
 
 if __name__ == '__main__':
     app.run(port=5000, debug=True)
+
