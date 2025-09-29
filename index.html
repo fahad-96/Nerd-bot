@@ -1,77 +1,49 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="light">
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>NerdChat - Your AI Assistant 🤓💬</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NerdChat - AIChat for Nerds</title>
+    <link rel="icon" type="image/png" href="https://em-content.zobj.net/source/apple/354/nerd-face_1f913.png">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
+        /* CSS Variables & Theme Configuration */
         :root {
-            /* Light Mode Colors */
-            --primary-gradient: linear-gradient(135deg, #3b82f6 0%, #06b6d4 100%);
-            --bg-primary: #ffffff;
-            --bg-secondary: #f8fafc;
-            --bg-tertiary: #f1f5f9;
-            --text-primary: #1e293b;
-            --text-secondary: #64748b;
-            --text-muted: #94a3b8;
-            --border-color: #e2e8f0;
-            --shadow-light: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
-            --shadow-medium: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
-            --shadow-heavy: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
-
-            /* Chat Bubble Colors */
-            --user-bubble-bg: linear-gradient(135deg, #3b82f6 0%, #06b6d4 100%);
-            --bot-bubble-bg: #f1f5f9;
-            --bot-bubble-border: #e2e8f0;
-
-            /* Input Bar */
-            --input-bg: rgba(255, 255, 255, 0.95);
-            --input-border: #e2e8f0;
-            --input-focus-border: #3b82f6;
-
-            /* Navbar */
-            --navbar-bg: rgba(255, 255, 255, 0.95);
-            --navbar-border: #e2e8f0;
-
-            /* Modal */
-            --modal-bg: #ffffff;
-            --modal-overlay: rgba(0, 0, 0, 0.5);
+            --bg-primary: #f8f9fa;
+            --bg-secondary: #ffffff;
+            --bg-tertiary: #e9ecef;
+            --text-primary: #212529;
+            --text-secondary: #6c757d;
+            --border-color: #dee2e6;
+            --accent-gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            --accent-solid: #667eea;
+            --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.05);
+            --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.1);
+            --bot-bubble-bg: #e9ecef;
+            --navbar-bg: rgba(255, 255, 255, 0.85);
+            --modal-overlay: rgba(33, 37, 41, 0.5);
         }
 
         [data-theme="dark"] {
-            /* Dark Mode Colors */
-            --primary-gradient: linear-gradient(135deg, #06b6d4 0%, #14b8a6 100%);
-            --bg-primary: #0f172a;
-            --bg-secondary: #1e293b;
-            --bg-tertiary: #334155;
-            --text-primary: #f1f5f9;
-            --text-secondary: #cbd5e1;
-            --text-muted: #94a3b8;
-            --border-color: #334155;
-            --shadow-light: 0 1px 3px 0 rgb(0 0 0 / 0.3), 0 1px 2px -1px rgb(0 0 0 / 0.3);
-            --shadow-medium: 0 4px 6px -1px rgb(0 0 0 / 0.3), 0 2px 4px -2px rgb(0 0 0 / 0.3);
-            --shadow-heavy: 0 20px 25px -5px rgb(0 0 0 / 0.3), 0 8px 10px -6px rgb(0 0 0 / 0.3);
-
-            --user-bubble-bg: linear-gradient(135deg, #06b6d4 0%, #14b8a6 100%);
-            --bot-bubble-bg: #334155;
-            --bot-bubble-border: #475569;
-
-            --input-bg: rgba(30, 41, 59, 0.95);
-            --input-border: #475569;
-            --input-focus-border: #06b6d4;
-
-            --navbar-bg: rgba(15, 23, 42, 0.95);
-            --navbar-border: #334155;
-
-            --modal-bg: #1e293b;
+            --bg-primary: #121212;
+            --bg-secondary: #1e1e1e;
+            --bg-tertiary: #2a2a2a;
+            --text-primary: #e0e0e0;
+            --text-secondary: #a0a0a0;
+            --border-color: #3a3a3a;
+            --accent-gradient: linear-gradient(135deg, #764ba2 0%, #667eea 100%);
+            --accent-solid: #764ba2;
+            --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.15);
+            --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.25);
+            --bot-bubble-bg: #2a2a2a;
+            --navbar-bg: rgba(30, 30, 30, 0.85);
             --modal-overlay: rgba(0, 0, 0, 0.7);
         }
 
-        /* --- GLOBAL STYLES --- */
+        /* Global Reset & Base Styles */
         * {
             margin: 0;
             padding: 0;
@@ -83,712 +55,280 @@
         }
 
         body {
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-            background: var(--bg-primary);
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--bg-primary);
             color: var(--text-primary);
-            min-height: 100vh;
             transition: background-color 0.3s ease, color 0.3s ease;
-            overflow: hidden;
+            -webkit-font-smoothing: antialiased;
         }
 
-        /* --- LOADING SCREEN STYLES (from loading.html) --- */
+        /* Loading Screen */
         #loading-screen {
-            height: 100vh;
             display: flex;
-            align-items: center;
             justify-content: center;
+            align-items: center;
+            height: 100vh;
+            flex-direction: column;
+            gap: 1.5rem;
         }
 
-        .loading-container {
-            text-align: center;
-            max-width: 400px;
-            padding: 2rem;
+        .loading-logo {
+            font-size: 3rem;
+            animation: pulse 2s infinite ease-in-out;
         }
 
-        .loading-container .logo-icon {
-            font-size: 4rem;
-            margin-bottom: 1rem;
-            display: block;
-            animation: bounce 2s infinite;
-        }
-
-        .loading-container .app-name {
-            font-size: 2.5rem;
-            font-weight: 700;
-            background: var(--primary-gradient);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            margin-bottom: 0.5rem;
-        }
-
-        .loading-container .tagline {
-            color: var(--text-secondary);
-            font-size: 1.1rem;
-            margin-bottom: 3rem;
-        }
-
-        .loading-spinner {
-            width: 60px;
-            height: 60px;
-            margin: 0 auto 2rem;
-            position: relative;
-        }
-
-        .spinner-ring {
-            width: 100%;
-            height: 100%;
-            border: 4px solid rgba(59, 130, 246, 0.1);
-            border-top: 4px solid #3b82f6;
+        .spinner {
+            width: 40px;
+            height: 40px;
+            border: 4px solid var(--bg-tertiary);
+            border-top-color: var(--accent-solid);
             border-radius: 50%;
             animation: spin 1s linear infinite;
         }
 
-        .loading-text {
-            font-size: 1.1rem;
-            color: var(--text-secondary);
-            margin-bottom: 1rem;
+        /* Landing Page Styles */
+        #landing-page {
+            display: none;
         }
 
-        .loading-dots {
-            display: inline-flex;
-            gap: 0.25rem;
-        }
-
-        .loading-dots span {
-            width: 8px;
-            height: 8px;
-            background: var(--primary-gradient);
-            border-radius: 50%;
-            animation: loadingBounce 1.4s infinite ease-in-out;
-        }
-
-        .loading-dots span:nth-child(1) {
-            animation-delay: -0.32s;
-        }
-
-        .loading-dots span:nth-child(2) {
-            animation-delay: -0.16s;
-        }
-
-        .progress-bar {
-            width: 100%;
-            height: 4px;
-            background: rgba(59, 130, 246, 0.1);
-            border-radius: 2px;
-            overflow: hidden;
-            margin-top: 2rem;
-        }
-
-        .progress-fill {
-            height: 100%;
-            background: var(--primary-gradient);
-            border-radius: 2px;
-            animation: progress 3s ease-in-out;
-        }
-
-        @keyframes spin {
-            0% {
-                transform: rotate(0deg);
-            }
-
-            100% {
-                transform: rotate(360deg);
-            }
-        }
-
-        @keyframes loadingBounce {
-
-            0%,
-            80%,
-            100% {
-                transform: scale(0.8);
-                opacity: 0.5;
-            }
-
-            40% {
-                transform: scale(1);
-                opacity: 1;
-            }
-        }
-
-        @keyframes progress {
-            0% {
-                width: 0%;
-            }
-
-            100% {
-                width: 100%;
-            }
-        }
-
-        /* --- LANDING PAGE STYLES (from landing.html) --- */
-        #landing-page .navbar {
+        .navbar {
+            padding: 1rem 1.5rem;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 1rem 2rem;
-            backdrop-filter: blur(20px);
-            border-bottom: 1px solid var(--border-color);
             position: sticky;
             top: 0;
             z-index: 100;
-            box-shadow: var(--shadow-light);
+            background-color: var(--navbar-bg);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--border-color);
         }
 
-        #landing-page .logo {
+        .logo {
             display: flex;
             align-items: center;
-            gap: 0.75rem;
-        }
-
-        #landing-page .logo-icon {
-            font-size: 2rem;
-            animation: bounce 2s infinite;
-        }
-
-        #landing-page .app-name {
-            font-size: 1.5rem;
-            font-weight: 700;
-            background: var(--primary-gradient);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-
-        .dark-mode-toggle {
-            background: var(--bg-tertiary);
-            border: 1px solid var(--border-color);
-            border-radius: 50%;
-            width: 44px;
-            height: 44px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            transition: all 0.2s ease;
-            font-size: 1.25rem;
-        }
-
-        .dark-mode-toggle:hover {
-            background: var(--bg-secondary);
-            transform: scale(1.05);
-            box-shadow: var(--shadow-light);
-        }
-
-        .hero-section {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            min-height: calc(100vh - 80px);
-            padding: 2rem;
-            text-align: center;
-            background: linear-gradient(135deg, var(--bg-primary) 0%, var(--bg-secondary) 100%);
-        }
-
-        .hero-content {
-            max-width: 800px;
-            margin-bottom: 3rem;
-        }
-
-        .hero-icon {
-            font-size: 6rem;
-            margin-bottom: 2rem;
-            display: block;
-            animation: float 3s ease-in-out infinite;
-        }
-
-        .hero-title {
-            font-size: 3.5rem;
-            font-weight: 700;
-            margin-bottom: 1rem;
-            background: var(--primary-gradient);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            line-height: 1.2;
-        }
-
-        .hero-subtitle {
-            font-size: 1.5rem;
-            color: var(--text-secondary);
-            margin-bottom: 2rem;
-            font-weight: 400;
-        }
-
-        .hero-description {
-            font-size: 1.1rem;
-            color: var(--text-muted);
-            line-height: 1.6;
-            margin-bottom: 3rem;
-        }
-
-        .cta-button {
-            background: var(--primary-gradient);
-            color: white;
-            border: none;
-            padding: 1.25rem 3rem;
-            font-size: 1.25rem;
-            font-weight: 600;
-            border-radius: 2rem;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            box-shadow: var(--shadow-medium);
-            display: inline-flex;
-            align-items: center;
-            gap: 0.75rem;
+            gap: 0.5rem;
             text-decoration: none;
-            position: relative;
-            overflow: hidden;
         }
 
-        .cta-button:hover {
-            transform: translateY(-2px);
-            box-shadow: var(--shadow-heavy);
+        .logo-icon {
+            font-size: 1.75rem;
         }
 
-        .cta-button:active {
-            transform: translateY(0);
-        }
-
-        .cta-icon {
-            font-size: 1.5rem;
-            animation: pulse 2s infinite;
-        }
-
-        .features-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 2rem;
-            margin-top: 4rem;
-            max-width: 1000px;
-        }
-
-        .feature-card {
-            background: var(--bg-primary);
-            border: 1px solid var(--border-color);
-            border-radius: 1rem;
-            padding: 2rem;
-            text-align: center;
-            box-shadow: var(--shadow-light);
-            transition: all 0.3s ease;
-        }
-
-        .feature-card:hover {
-            transform: translateY(-5px);
-            box-shadow: var(--shadow-medium);
-        }
-
-        .feature-icon {
-            font-size: 2.5rem;
-            margin-bottom: 1rem;
-            display: block;
-        }
-
-        .feature-title {
+        .logo-text {
             font-size: 1.25rem;
             font-weight: 600;
-            margin-bottom: 0.75rem;
             color: var(--text-primary);
         }
 
-        .feature-description {
-            color: var(--text-secondary);
-            line-height: 1.5;
+        .theme-toggle-btn {
+            background-color: var(--bg-tertiary);
+            border: none;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            font-size: 1.25rem;
+            transition: background-color 0.2s, transform 0.2s;
         }
 
-        .footer {
+        .theme-toggle-btn:hover {
+            transform: scale(1.1);
+        }
+
+        .hero {
             text-align: center;
-            padding: 2rem;
-            color: var(--text-muted);
-            font-size: 0.9rem;
-            border-top: 1px solid var(--border-color);
-            background: var(--bg-secondary);
-        }
-
-        @keyframes float {
-
-            0%,
-            100% {
-                transform: translateY(0px);
-            }
-
-            50% {
-                transform: translateY(-10px);
-            }
-        }
-
-        @keyframes pulse {
-
-            0%,
-            100% {
-                transform: scale(1);
-            }
-
-            50% {
-                transform: scale(1.1);
-            }
-        }
-
-        /* --- CHAT APP STYLES (from index.html) --- */
-        #chat-app {
-            height: 100vh;
-            height: 100dvh;
+            padding: 4rem 1.5rem;
             display: flex;
             flex-direction: column;
-        }
-
-        #chat-app .navbar {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 1rem 1.5rem;
-            background: var(--navbar-bg);
-            backdrop-filter: blur(20px);
-            border-bottom: 1px solid var(--navbar-border);
-            z-index: 100;
-            box-shadow: var(--shadow-light);
-        }
-
-        #chat-app .navbar-left {
-            display: flex;
             align-items: center;
         }
 
-        #chat-app .logo {
-            display: flex;
-            align-items: center;
-            gap: 0.75rem;
-        }
-
-        #chat-app .logo-icon {
-            font-size: 2rem;
-            animation: bounce 2s infinite;
-        }
-
-        #chat-app .app-name {
-            font-size: 1.5rem;
+        .hero-title {
+            font-size: 2.5rem;
             font-weight: 700;
-            background: var(--user-bubble-bg);
+            line-height: 1.2;
+            max-width: 600px;
+            margin-bottom: 1rem;
+        }
+
+        .hero-title span {
+            background: var(--accent-gradient);
             -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
             background-clip: text;
+            -webkit-text-fill-color: transparent;
         }
 
-        #chat-app .navbar-right {
-            display: flex;
-            gap: 0.5rem;
-        }
-
-        .icon-btn {
-            background: none;
-            border: none;
-            padding: 0.75rem;
-            border-radius: 50%;
-            cursor: pointer;
-            transition: all 0.2s ease;
-            font-size: 1.25rem;
+        .hero-subtitle {
+            font-size: 1.1rem;
             color: var(--text-secondary);
-            background: var(--bg-tertiary);
+            max-width: 500px;
+            margin-bottom: 2rem;
+            line-height: 1.6;
         }
 
-        .icon-btn:hover {
-            background: var(--bg-secondary);
-            transform: scale(1.05);
-            box-shadow: var(--shadow-light);
+        .cta-button {
+            background: var(--accent-gradient);
+            color: white;
+            border: none;
+            padding: 1rem 2.5rem;
+            font-size: 1rem;
+            font-weight: 500;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            box-shadow: var(--shadow-md);
+            text-decoration: none;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
+        }
+
+        /* Chat Application Styles */
+        #chat-app {
+            display: none;
+            flex-direction: column;
+            height: 100vh;
+            height: 100dvh;
+        }
+
+        /* Custom Scrollbar Styling */
+        @media (min-width: 768px) {
+            .chat-messages {
+                scrollbar-width: thin;
+                scrollbar-color: var(--accent-solid) var(--bg-tertiary);
+            }
+
+            .chat-messages::-webkit-scrollbar {
+                width: 8px;
+            }
+
+            .chat-messages::-webkit-scrollbar-track {
+                background: var(--bg-tertiary);
+                border-radius: 10px;
+            }
+
+            .chat-messages::-webkit-scrollbar-thumb {
+                background-color: var(--text-secondary);
+                border-radius: 10px;
+                border: 2px solid var(--bg-tertiary);
+            }
+
+            .chat-messages::-webkit-scrollbar-thumb:hover {
+                background-color: var(--accent-solid);
+            }
+        }
+
+        /* Hide scrollbar on mobile */
+        @media (max-width: 767px) {
+            .chat-messages {
+                scrollbar-width: none;
+                -ms-overflow-style: none;
+            }
+
+            .chat-messages::-webkit-scrollbar {
+                display: none;
+            }
         }
 
         .chat-container {
             flex: 1;
             display: flex;
             flex-direction: column;
+            background-color: var(--bg-primary);
             overflow: hidden;
-            padding: 0 1rem;
-            background: var(--bg-secondary);
         }
 
         .chat-messages {
             flex: 1;
+            padding: 1.5rem 1rem;
             overflow-y: auto;
-            padding: 1.5rem 0;
+            overflow-x: hidden;
+            display: flex;
+            flex-direction: column-reverse;
+        }
+
+        /* Chat Clear Animation */
+        .message.snapped {
+            transform-origin: bottom center;
+            animation: crumble-away 0.7s forwards ease-in;
+        }
+
+        @keyframes crumble-away {
+            0% {
+                opacity: 1;
+                transform: rotate(0deg) scale(1);
+                filter: blur(0);
+            }
+
+            100% {
+                opacity: 0;
+                transform: rotate(15deg) scale(0.8) translateY(40px);
+                filter: blur(4px);
+            }
+        }
+
+        .messages-wrapper {
             display: flex;
             flex-direction: column;
             gap: 1rem;
-            scroll-behavior: smooth;
-            justify-content: flex-end;
-        }
-
-        .chat-messages::-webkit-scrollbar {
-            width: 6px;
-        }
-
-        .chat-messages::-webkit-scrollbar-track {
-            background: transparent;
-        }
-
-        .chat-messages::-webkit-scrollbar-thumb {
-            background: var(--border-color);
-            border-radius: 3px;
+            padding-top: 1rem;
         }
 
         .message {
             display: flex;
             gap: 0.75rem;
-            animation: messageSlideIn 0.3s ease-out;
-            position: relative;
+            max-width: 80%;
+            animation: message-in 0.3s ease-out;
         }
 
         .user-message {
-            flex-direction: row-reverse;
             align-self: flex-end;
-            max-width: 70%;
+            flex-direction: row-reverse;
         }
 
         .bot-message {
-            flex-direction: row;
             align-self: flex-start;
-            max-width: 80%;
-        }
-
-
-        .bot-avatar {
-            background: var(--bot-bubble-bg);
-            border: 2px solid var(--bot-bubble-border);
-            border-radius: 50%;
-            width: 36px;
-            height: 36px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
         }
 
         .message-bubble {
-            background: var(--bot-bubble-bg);
-            border: 1px solid var(--bot-bubble-border);
-            padding: 1rem 1.25rem;
-            border-radius: 1.5rem;
-            box-shadow: var(--shadow-light);
-            position: relative;
-            word-wrap: break-word;
+            padding: 0.75rem 1.25rem;
+            border-radius: 1.25rem;
             line-height: 1.5;
+            word-wrap: break-word;
         }
 
         .user-message .message-bubble {
-            background: var(--user-bubble-bg);
+            background: var(--accent-gradient);
             color: white;
-            border: none;
-            border-radius: 1.5rem 1.5rem 0.5rem 1.5rem;
+            border-bottom-right-radius: 0.5rem;
         }
 
         .bot-message .message-bubble {
-            border-radius: 1.5rem 1.5rem 1.5rem 0.5rem;
-        }
-
-        .message[data-timestamp]:hover::after {
-            content: attr(data-timestamp);
-            position: absolute;
-            bottom: -1.5rem;
-            right: 1rem;
-            font-size: 0.75rem;
-            color: var(--text-muted);
-            opacity: 1;
-            transition: opacity 0.2s ease;
-        }
-
-        .typing-indicator {
-            display: none;
-            animation: messageSlideIn 0.3s ease-out;
-        }
-
-        .typing-indicator.show {
-            display: flex;
-        }
-
-        .typing-bubble {
-            background: var(--bot-bubble-bg);
-            border: 1px solid var(--bot-bubble-border);
-            padding: 1rem 1.25rem;
-            border-radius: 1.5rem 1.5rem 1.5rem 0.5rem;
-            box-shadow: var(--shadow-light);
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-
-        .typing-dots {
-            display: flex;
-            gap: 0.25rem;
-        }
-
-        .typing-dots span {
-            width: 6px;
-            height: 6px;
-            background: var(--text-muted);
-            border-radius: 50%;
-            animation: typingBounce 1.4s infinite ease-in-out;
-        }
-
-        .typing-dots span:nth-child(1) {
-            animation-delay: -0.32s;
-        }
-
-        .typing-dots span:nth-child(2) {
-            animation-delay: -0.16s;
-        }
-
-        .input-bar {
-            background: var(--input-bg);
-            backdrop-filter: blur(20px);
-            border-top: 1px solid var(--input-border);
-            padding: 1rem 1.5rem 0.5rem;
-        }
-
-        .input-container {
-            display: flex;
-            align-items: flex-end;
-            gap: 0.75rem;
-            max-width: 100%;
-        }
-
-        .upload-btn,
-        .emoji-btn,
-        .send-btn {
-            background: var(--bg-tertiary);
-            border: 1px solid var(--input-border);
-            border-radius: 50%;
-            width: 44px;
-            height: 44px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            transition: all 0.2s ease;
-            font-size: 1.25rem;
-            flex-shrink: 0;
-        }
-
-        .send-btn {
-            background: var(--user-bubble-bg);
-            border: none;
-            color: white;
-        }
-
-        .send-btn:disabled {
-            opacity: 0.5;
-            cursor: not-allowed;
-        }
-
-        .text-input-wrapper {
-            flex: 1;
-            position: relative;
-            background: var(--bg-primary);
-            border: 1px solid var(--input-border);
-            border-radius: 1.5rem;
-            display: flex;
-            align-items: flex-end;
-            overflow: hidden;
-        }
-
-        .text-input-wrapper:focus-within {
-            border-color: var(--input-focus-border);
-            box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
-        }
-
-        #messageInput {
-            flex: 1;
-            border: none;
-            outline: none;
-            padding: 1rem 1.25rem;
-            font-size: 1rem;
-            line-height: 1.5;
-            background: transparent;
+            background-color: var(--bot-bubble-bg);
             color: var(--text-primary);
-            resize: none;
-            max-height: 120px;
-            min-height: 44px;
+            border-bottom-left-radius: 0.5rem;
         }
 
-        .input-bar .footer-text {
-            text-align: center;
-            margin-top: 0.75rem;
-            font-size: 0.75rem;
-            color: var(--text-muted);
-            opacity: 0.7;
+        .message-info {
+            font-size: 0.7rem;
+            color: var(--text-secondary);
+            margin-top: 0.25rem;
+            text-align: right;
         }
 
-        .modal-overlay {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: var(--modal-overlay);
-            backdrop-filter: blur(4px);
-            z-index: 1000;
-            justify-content: center;
-            align-items: center;
+        .user-message .message-info {
+            color: rgba(255, 255, 255, 0.8);
         }
 
-        .modal-overlay.show {
-            display: flex;
-        }
-
-        .modal {
-            background: var(--modal-bg);
-            border-radius: 1rem;
-            box-shadow: var(--shadow-heavy);
-            width: 90%;
-            max-width: 400px;
-            animation: modalSlideIn 0.3s ease-out;
-        }
-
-        .modal-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 1.5rem 1.5rem 1rem;
-            border-bottom: 1px solid var(--border-color);
-        }
-
-        .modal-header h3 {
-            font-size: 1.25rem;
-            font-weight: 600;
-        }
-
-        .close-btn {
-            background: none;
-            border: none;
-            font-size: 1.5rem;
-            cursor: pointer;
-            color: var(--text-muted);
-        }
-
-        .modal-body {
-            padding: 1.5rem;
-        }
-
-        .clear-chat-btn {
-            width: 100%;
-            padding: 1rem;
-            background: #ef4444;
-            color: white;
-            border: none;
-            border-radius: 0.75rem;
-            font-size: 1rem;
-            font-weight: 500;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 0.5rem;
-        }
-
-        .confirmation-message {
-            background: #10b981;
-            color: white;
-            border: none;
+        .read-receipt {
+            margin-left: 0.25rem;
+            color: #4fc3f7;
         }
 
         .message-image {
@@ -797,20 +337,8 @@
             margin-top: 0.5rem;
         }
 
-        .message-bubble code {
-            background: rgba(0, 0, 0, 0.1);
-            padding: 0.125rem 0.375rem;
-            border-radius: 0.25rem;
-            font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
-            font-size: 0.875rem;
-        }
-
-        .user-message .message-bubble code {
-            background: rgba(255, 255, 255, 0.2);
-        }
-
         .message-bubble pre {
-            background: rgba(0, 0, 0, 0.1);
+            background: rgba(0, 0, 0, 0.2);
             padding: 0.75rem;
             border-radius: 0.5rem;
             margin: 0.5rem 0;
@@ -818,49 +346,170 @@
             font-size: 0.875rem;
         }
 
-        .user-message .message-bubble pre {
-            background: rgba(255, 255, 255, 0.2);
+        .typing-indicator {
+            padding: 1rem;
+            display: none;
         }
 
-        /* --- SHARED & ANIMATION STYLES --- */
-        @keyframes bounce {
+        .typing-indicator.show {
+            display: block;
+        }
 
-            0%,
-            20%,
-            50%,
-            80%,
-            100% {
-                transform: translateY(0);
-            }
+        .typing-dots span {
+            display: inline-block;
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background-color: var(--text-secondary);
+            margin: 0 2px;
+            animation: typing-bounce 1.4s infinite ease-in-out;
+        }
 
-            40% {
-                transform: translateY(-5px);
-            }
+        .typing-dots span:nth-child(2) {
+            animation-delay: -0.16s;
+        }
 
-            60% {
-                transform: translateY(-3px);
+        .typing-dots span:nth-child(3) {
+            animation-delay: -0.32s;
+        }
+
+        .input-bar {
+            padding: 0.75rem 1rem;
+            background-color: var(--bg-secondary);
+            border-top: 1px solid var(--border-color);
+        }
+
+        .input-container {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            background-color: var(--bg-tertiary);
+            border-radius: 2rem;
+            padding: 0.25rem 0.25rem 0.25rem 1rem;
+        }
+
+        #messageInput {
+            flex: 1;
+            border: none;
+            outline: none;
+            background: transparent;
+            color: var(--text-primary);
+            font-size: 1rem;
+            line-height: 1.5;
+            resize: none;
+            max-height: 120px;
+            padding: 0.6rem 0;
+        }
+
+        .icon-btn {
+            background: transparent;
+            border: none;
+            border-radius: 50%;
+            width: 44px;
+            height: 44px;
+            font-size: 1.25rem;
+            color: var(--text-secondary);
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            transition: color 0.2s;
+        }
+
+        .icon-btn:hover {
+            color: var(--text-primary);
+        }
+
+        .send-btn {
+            background: var(--accent-gradient);
+            color: white;
+            transition: transform 0.2s, opacity 0.2s;
+        }
+
+        .send-btn:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+            transform: scale(1);
+        }
+
+        .send-btn:hover:not(:disabled) {
+            transform: scale(1.05);
+        }
+
+        /* Modal Styles */
+        .modal-overlay {
+            position: fixed;
+            inset: 0;
+            background-color: var(--modal-overlay);
+            z-index: 1000;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s, visibility 0.3s;
+        }
+
+        .modal-overlay.show {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .modal {
+            background-color: var(--bg-secondary);
+            border-radius: 1rem;
+            box-shadow: var(--shadow-md);
+            width: 90%;
+            max-width: 350px;
+            padding: 1.5rem;
+            transform: scale(0.95);
+            transition: transform 0.3s;
+        }
+
+        .modal-overlay.show .modal {
+            transform: scale(1);
+        }
+
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+
+        .modal-header h3 {
+            font-size: 1.2rem;
+        }
+
+        .clear-chat-btn {
+            width: 100%;
+            padding: 0.75rem;
+            background-color: #dc3545;
+            color: white;
+            border: none;
+            border-radius: 0.5rem;
+            font-size: 1rem;
+            cursor: pointer;
+        }
+
+        /* Animations */
+        @keyframes spin {
+            to {
+                transform: rotate(360deg);
             }
         }
 
-        @keyframes typingBounce {
-
-            0%,
-            80%,
-            100% {
-                transform: scale(0.8);
-                opacity: 0.5;
-            }
-
-            40% {
-                transform: scale(1);
-                opacity: 1;
+        @keyframes pulse {
+            50% {
+                opacity: 0.6;
             }
         }
 
-        @keyframes messageSlideIn {
+        @keyframes message-in {
             from {
                 opacity: 0;
-                transform: translateY(20px);
+                transform: translateY(10px);
             }
 
             to {
@@ -869,173 +518,152 @@
             }
         }
 
-        @keyframes modalSlideIn {
-            from {
-                opacity: 0;
-                transform: scale(0.9) translateY(-20px);
+        @keyframes typing-bounce {
+            0%, 80%, 100% {
+                transform: scale(0);
             }
 
-            to {
-                opacity: 1;
-                transform: scale(1) translateY(0);
+            40% {
+                transform: scale(1.0);
             }
         }
 
-        /* --- Mobile View Adjustments --- */
-@media (max-width: 600px) {
-    .emoji-btn {
-        display: none;
-    }
-}
+        /* Media Queries */
+        @media (min-width: 768px) {
+            .hero-title {
+                font-size: 3.5rem;
+            }
+
+            .hero-subtitle {
+                font-size: 1.25rem;
+            }
+
+            .message {
+                max-width: 65%;
+            }
+
+            .input-bar {
+                padding: 1rem 1.5rem;
+            }
+
+            .input-container {
+                max-width: 800px;
+                margin: 0 auto;
+            }
+        }
     </style>
 </head>
 
 <body>
 
     <div id="loading-screen">
-        <div class="loading-container">
-            <div class="logo-container">
-                <span class="logo-icon">🤓</span>
-                <h1 class="app-name">NerdChat</h1>
-                <p class="tagline">Your AI Assistant is Getting Ready</p>
-            </div>
-            <div class="loading-spinner">
-                <div class="spinner-ring"></div>
-            </div>
-            <div class="loading-text">
-                Initializing NerdGirl
-                <div class="loading-dots"><span></span><span></span><span></span></div>
-            </div>
-            <div class="progress-bar">
-                <div class="progress-fill"></div>
-            </div>
-        </div>
+        <div class="loading-logo">🤓</div>
+        <div class="spinner"></div>
     </div>
 
-    <div id="landing-page" style="display: none;">
+    <div id="landing-page">
         <nav class="navbar">
-            <div class="logo"><span class="logo-icon">🤓</span>
-                <h1 class="app-name">NerdChat</h1>
-            </div>
-            <button class="dark-mode-toggle" title="Toggle Dark Mode"><span>🌙</span></button>
+            <a href="#" class="logo">
+                <span class="logo-icon">🤓</span>
+                <span class="logo-text">NerdChat</span>
+            </a>
+            <button class="theme-toggle-btn" title="Toggle Theme">
+                <span>🌙</span>
+            </button>
         </nav>
-        <main class="hero-section">
-            <div class="hero-content">
-                <span class="hero-icon">🤓💬</span>
-                <h1 class="hero-title">Meet NerdGirl</h1>
-                <p class="hero-subtitle">Your Smart AI Assistant</p>
-                <p class="hero-description">
-                    Experience the future of AI conversation with NerdGirl - your intelligent,
-                    friendly, and knowledgeable companion ready to help with coding, creative projects,
-                    problem-solving, and engaging discussions. Start chatting now!
-                </p>
-                <a href="#" id="startChattingBtn" class="cta-button">
-                    <span class="cta-icon">💬</span> Start Chatting with NerdGirl
-                </a>
-            </div>
-            <div class="features-grid">
-                <div class="feature-card"><span class="feature-icon">🧠</span>
-                    <h3 class="feature-title">Smart Conversations</h3>
-                    <p class="feature-description">Engage in intelligent discussions on any topic with advanced AI
-                        understanding.</p>
-                </div>
-                <div class="feature-card"><span class="feature-icon">💻</span>
-                    <h3 class="feature-title">Code Assistant</h3>
-                    <p class="feature-description">Get help with programming, debugging, and learning new technologies.
-                    </p>
-                </div>
-                <div class="feature-card"><span class="feature-icon">🎨</span>
-                    <h3 class="feature-title">Creative Partner</h3>
-                    <p class="feature-description">Collaborate on creative projects, writing, and brainstorming ideas.
-                    </p>
-                </div>
-                <div class="feature-card"><span class="feature-icon">🌙</span>
-                    <h3 class="feature-title">Always Available</h3>
-                    <p class="feature-description">24/7 assistance with dark mode support and responsive design.</p>
-                </div>
-            </div>
+        <main class="hero">
+            <h1 class="hero-title">Meet <span>NerdGirl</span>, Your Modern AI Companion</h1>
+            <p class="hero-subtitle">
+                Unlock smarter conversations. Whether you're debugging code, brainstorming ideas, or just curious,
+                NerdGirl is here to help.
+            </p>
+            <a href="#" id="startChattingBtn" class="cta-button">Start Chatting Now</a>
         </main>
-        <footer class="footer">
-            <p>Powered by NerdChat 🤓 - Your AI Assistant Experience</p>
-        </footer>
     </div>
 
-    <div id="chat-app" style="display: none;">
+    <div id="chat-app">
         <header class="navbar">
-            <div class="navbar-left">
-                <div class="logo"><span class="logo-icon">🤓</span>
-                    <h1 class="app-name">NerdGirl</h1>
-                </div>
-            </div>
-            <div class="navbar-right">
-                <button class="icon-btn dark-mode-toggle" title="Toggle Dark Mode"><span>🌙</span></button>
-                <button class="icon-btn" id="settingsBtn" title="Settings"><span>🗑️</span></button>
+            <a href="#" class="logo">
+                <span class="logo-icon">🤓</span>
+                <span class="logo-text">NerdGirl</span>
+            </a>
+            <div style="display: flex; gap: 0.5rem;">
+                <button class="theme-toggle-btn icon-btn" title="Toggle Theme"><span>🌙</span></button>
+                <button id="muteBtn" class="icon-btn" title="Toggle Sound"><span>🔊</span></button>
+                <button id="settingsBtn" class="icon-btn" title="Settings">🗑️</button>
             </div>
         </header>
-        <div class="modal-overlay" id="settingsModal">
-            <div class="modal">
-                <div class="modal-header">
-                    <h3>Settings</h3><button class="close-btn" id="closeSettings">×</button>
-                </div>
-                <div class="modal-body"><button class="clear-chat-btn" id="clearChatBtn"><span>🗑️</span> Clear Chat
-                        History</button></div>
-            </div>
-        </div>
+
         <main class="chat-container">
             <div class="chat-messages" id="chatMessages">
-                <div class="message bot-message" data-timestamp="Just now">
-                    <div class="message-bubble">
-                        <p>Hey there! I'm NerdGirl, your AI assistant. How can I help you today?</p>
+                <div class="messages-wrapper">
+                    <div class="message bot-message">
+                        <div class="message-bubble">
+                            <p>Hey there! I'm NerdGirl. How can I help you today?</p>
+                        </div>
                     </div>
                 </div>
             </div>
             <div class="typing-indicator" id="typingIndicator">
                 <div class="message bot-message">
-                    <div class="typing-bubble">
-                        <span>NerdGirl is thinking</span>
+                    <div class="message-bubble">
                         <div class="typing-dots"><span></span><span></span><span></span></div>
                     </div>
                 </div>
             </div>
         </main>
+
         <footer class="input-bar">
             <div class="input-container">
-                <button class="upload-btn" id="uploadBtn" title="Upload file"><span>📎</span></button>
-                <div class="text-input-wrapper">
-                    <textarea id="messageInput" placeholder="Type your message" rows="1" maxlength="1000"></textarea>
-                    <button class="emoji-btn" id="emojiBtn" title="Add emoji"><span>😊</span></button>
-                </div>
-                <button class="send-btn" id="sendBtn" title="Send message"><span>✈️</span></button>
+                <button id="uploadBtn" class="icon-btn" title="Upload File">📎</button>
+                <textarea id="messageInput" placeholder="Type your message..." rows="1"></textarea>
+                <button id="sendBtn" class="icon-btn send-btn" title="Send Message" disabled>➤</button>
             </div>
-            <div class="footer-text">Powered by <a href="https://t.me/fahadyousf">Nerd-Dev</a> 🤓</div>
         </footer>
-        <input type="file" id="fileInput" accept="image/*,text/*" style="display: none;">
+        <input type="file" id="fileInput" accept="image/*" style="display: none;">
     </div>
+
+    <div class="modal-overlay" id="settingsModal">
+        <div class="modal">
+            <div class="modal-header">
+                <h3>Settings</h3>
+                <button id="closeSettings" class="icon-btn" style="width: 32px; height: 32px;">&times;</button>
+            </div>
+            <button class="clear-chat-btn" id="clearChatBtn">Clear Chat History</button>
+        </div>
+    </div>
+
+    <!-- Audio Elements for Message Sounds -->
+    <audio id="incomingMessageSound" src="https://cdn.pixabay.com/audio/2025/09/28/audio_087c604e96.mp3"
+        preload="auto"></audio>
+    <audio id="outgoingMessageSound" src="https://cdn.pixabay.com/audio/2025/05/29/audio_71dbe67d89.mp3"
+        preload="auto"></audio>
 
 
     <script>
         class NerdChat {
             constructor() {
-                this.messages = [];
                 this.isTyping = false;
-
+                this.isMuted = false;
                 this.initializeElements();
                 this.bindEvents();
                 this.autoResizeTextarea();
+                this.applyInitialSettings();
             }
 
             initializeElements() {
-                this.chatMessages = document.getElementById('chatMessages');
+                this.chatMessages = document.getElementById('chatMessages').querySelector('.messages-wrapper');
+                this.chatMessagesContainer = document.getElementById('chatMessages');
                 this.messageInput = document.getElementById('messageInput');
                 this.sendBtn = document.getElementById('sendBtn');
                 this.uploadBtn = document.getElementById('uploadBtn');
-                this.emojiBtn = document.getElementById('emojiBtn');
                 this.settingsBtn = document.getElementById('settingsBtn');
                 this.settingsModal = document.getElementById('settingsModal');
                 this.closeSettings = document.getElementById('closeSettings');
                 this.clearChatBtn = document.getElementById('clearChatBtn');
                 this.typingIndicator = document.getElementById('typingIndicator');
                 this.fileInput = document.getElementById('fileInput');
+                this.muteBtn = document.getElementById('muteBtn');
             }
 
             bindEvents() {
@@ -1052,19 +680,37 @@
                 });
                 this.uploadBtn.addEventListener('click', () => this.fileInput.click());
                 this.fileInput.addEventListener('change', (e) => this.handleFileUpload(e));
-                this.emojiBtn.addEventListener('click', () => this.addEmoji());
                 this.settingsBtn.addEventListener('click', () => this.openSettings());
                 this.closeSettings.addEventListener('click', () => this.closeSettingsModal());
                 this.settingsModal.addEventListener('click', (e) => {
                     if (e.target === this.settingsModal) this.closeSettingsModal();
                 });
                 this.clearChatBtn.addEventListener('click', () => this.clearChat());
+                this.muteBtn.addEventListener('click', () => this.toggleMute());
+            }
+
+
+            applyInitialSettings() {
+                const savedMuteState = localStorage.getItem('chatMuted') === 'true';
+                this.isMuted = savedMuteState;
+                this.updateMuteIcon();
+            }
+
+            toggleMute() {
+                this.isMuted = !this.isMuted;
+                localStorage.setItem('chatMuted', this.isMuted);
+                this.updateMuteIcon();
+            }
+
+            updateMuteIcon() {
+                const icon = this.muteBtn.querySelector('span');
+                icon.textContent = this.isMuted ? '🔇' : '🔊';
             }
 
             autoResizeTextarea() {
                 const textarea = this.messageInput;
                 textarea.style.height = 'auto';
-                textarea.style.height = Math.min(textarea.scrollHeight, 120) + 'px';
+                textarea.style.height = `${textarea.scrollHeight}px`;
             }
 
             updateSendButton() {
@@ -1072,89 +718,113 @@
                 this.sendBtn.disabled = !hasText || this.isTyping;
             }
 
-            getCurrentTimestamp() {
-                return new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
-            }
-
-            // --- MODIFIED FUNCTION ---
             async sendMessage(text, imageData = null) {
-                const messageText = text || this.messageInput.value.trim();
-                if (!messageText && !imageData) return;
+    const messageText = text || this.messageInput.value.trim();
+    if (!messageText && !imageData) return;
 
-                if (!imageData) { // Only add a user message bubble if it's not an image upload
-                    this.addMessage(messageText, 'user');
+    if (!this.isMuted) {
+        document.getElementById('outgoingMessageSound').play();
+    }
+
+    if (!text) {
+        this.addMessage(messageText, 'user');
+    }
+    
+    this.messageInput.value = '';
+    this.autoResizeTextarea();
+    this.updateSendButton();
+    this.showTyping();
+
+    try {
+        // --- THIS IS THE FIX ---
+        // Check if the message starts with the /generate_image command
+        if (messageText.toLowerCase().startsWith('/generate_image')) {
+            
+            // Extract the actual prompt after the command
+            const prompt = messageText.replace(/\/generate_image/i, '').trim();
+            
+            if (prompt) {
+                // Call the new image generation endpoint
+                const imageResponse = await fetch('/generate_image', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ prompt: prompt }),
+                });
+
+                if (!imageResponse.ok) throw new Error(`HTTP error! status: ${imageResponse.status}`);
+
+                const imageData = await imageResponse.json();
+                
+                if (imageData.image_url) {
+                    const imageHtml = `<img src="${imageData.image_url}" alt="${prompt}" class="message-image">`;
+                    if (imageData.message) {
+                        this.addMessage(imageData.message, 'bot');
+                    }
+                    this.addMessage(imageHtml, 'bot', { isHtml: true });
+                } else {
+                    this.addMessage("Sorry, I couldn't generate an image. " + (imageData.error || "Unknown error."), 'bot');
                 }
-
-                this.messageInput.value = '';
-                this.autoResizeTextarea();
-                this.updateSendButton();
-                this.showTyping();
-
-                try {
-                    // Send both message text and image data to the backend
-                    const response = await fetch('/chat', {
-                        method: 'POST',
-                        headers: { 'Content-Type': 'application/json' },
-                        body: JSON.stringify({
-                            message: messageText,
-                            image_data: imageData // Send the Base64 image data
-                        }),
-                    });
-
-                    if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
-
-                    const data = await response.json();
-                    this.addMessage(data.reply, 'bot');
-
-                } catch (error) {
-                    console.error('Error fetching AI response:', error);
-                    this.addMessage('Sorry, I seem to be having trouble connecting. Please try again later.', 'bot');
-                } finally {
-                    this.hideTyping();
-                    requestAnimationFrame(()=>
-                    this.messageInput.focus());
-                }
+            } else {
+                this.addMessage("Please provide a description after the command (e.g., '/generate_image a cat in space').", 'bot');
             }
+        } else {
+            // --- Existing chat logic for text and image analysis ---
+            const response = await fetch('/chat', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ message: messageText, image_data: imageData }),
+            });
+
+            if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
+
+            const data = await response.json();
+            this.addMessage(data.reply, 'bot');
+        }
+
+    } catch (error) {
+        console.error('Error in sendMessage:', error);
+        this.addMessage("Sorry, I can't connect right now. Please try again later.", 'bot');
+    } finally {
+        this.hideTyping();
+        this.messageInput.focus();
+    }
+}
 
             addMessage(content, sender, options = {}) {
-                const { isConfirmation = false, isHtml = false } = options;
-                const timestamp = this.getCurrentTimestamp();
+                if (sender === 'bot' && !this.isMuted) {
+                    document.getElementById('incomingMessageSound').play().catch(error => {
+                        console.log("Audio play failed, user interaction might be needed first.", error);
+                    });
+                }
+
+                const { isHtml = false } = options;
                 const messageDiv = document.createElement('div');
                 messageDiv.className = `message ${sender}-message`;
-                messageDiv.setAttribute('data-timestamp', timestamp);
 
-                // Process content only if it's NOT pre-formatted HTML
                 const processedContent = isHtml ? content : this.formatMessageContent(content);
+                const timestamp = new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
 
-                if (sender === 'user') {
-                    messageDiv.innerHTML = `<div class="message-bubble">${processedContent}</div>`;
-                } else {
-                    messageDiv.innerHTML = `
-        <div class="message-bubble ${isConfirmation ? 'confirmation-message' : ''}">
-            ${isConfirmation ? '✅ ' : ''}${processedContent}
-        </div>`;
-                }
+                const bubbleContent = `
+            <p>${processedContent}</p>
+            <div class="message-info">
+                ${timestamp}
+                ${sender === 'user' ? `<span class="read-receipt">✓✓</span>` : ''}
+            </div>`;
+
+                messageDiv.innerHTML = `<div class="message-bubble">${bubbleContent}</div>`;
                 this.chatMessages.appendChild(messageDiv);
                 this.scrollToBottom();
-                this.messages.push({ content, sender, timestamp, isConfirmation });
             }
 
             formatMessageContent(content) {
-                content = this.escapeHtml(content);
-
-                content = content.replace(/```(\w+)?\n?([\s\S]*?)```/g, (match, lang, code) => `<pre><code>${code.trim()}</code></pre>`);
-                content = content.replace(/`([^`]+)`/g, '<code>$1</code>');
-
-                content = content.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>');
-
-                content = content.replace(/\*(.*?)\*/g, '<em>$1</em>');
-
-                content = content.replace(/\n/g, '<br>');
-                return content;
-            }
-
-            escapeHtml(text) {
-                return text.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;").replace(/'/g, "&#039;");
+                const escapeHtml = (text) => text.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;").replace(/'/g, "&#039;");
+                let safeContent = escapeHtml(content);
+                safeContent = safeContent.replace(/```(\w+)?\n?([\s\S]*?)```/g, (match, lang, code) => `<pre><code>${code.trim()}</code></pre>`);
+                safeContent = safeContent.replace(/`([^`]+)`/g, '<code>$1</code>');
+                safeContent = safeContent.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>');
+                safeContent = safeContent.replace(/\*(.*?)\*/g, '<em>$1</em>');
+                safeContent = safeContent.replace(/\n/g, '<br>');
+                return safeContent;
             }
 
             showTyping() {
@@ -1171,116 +841,103 @@
             }
 
             handleFileUpload(event) {
-    const file = event.target.files[0];
-    if (!file || !file.type.startsWith('image/')) return;
+                const file = event.target.files[0];
+                if (!file || !file.type.startsWith('image/')) return;
 
-    const reader = new FileReader();
-    reader.onload = (e) => {
-        const imageDataUrl = e.target.result; // This is the Base64 Data URL
-
-        // 1. Display the image preview in the chat
-        const imageContent = `📸 Uploaded: ${this.escapeHtml(file.name)}<br><img src="${imageDataUrl}" alt="preview" class="message-image">`;
-        this.addMessage(imageContent, 'user', { isHtml: true }); 
-
-        // 2. Send the image data to the backend for processing
-        const prompt = "What do you see in this image?"; // Or you could use text from the input box
-        this.sendMessage(prompt, imageDataUrl); 
-    };
-    reader.readAsDataURL(file);
-    event.target.value = ''; // Clear the file input
-}
-
-            addEmoji() {
-                const emojis = ['😊', '👍', '❤️', '😂', '🤔', '🎉'];
-                this.messageInput.value += emojis[Math.floor(Math.random() * emojis.length)];
-                this.messageInput.focus();
-                this.updateSendButton();
+                const reader = new FileReader();
+                reader.onload = (e) => {
+                    const imageDataUrl = e.target.result;
+                    const imageContent = `<img src="${imageDataUrl}" alt="Uploaded Image" class="message-image">`;
+                    this.addMessage(imageContent, 'user', { isHtml: true });
+                    this.sendMessage("Describe this image.", imageDataUrl);
+                };
+                reader.readAsDataURL(file);
+                event.target.value = '';
             }
 
             scrollToBottom() {
-                setTimeout(() => { this.chatMessages.scrollTop = this.chatMessages.scrollHeight; }, 50);
+                this.chatMessagesContainer.scrollTop = 0;
             }
 
             openSettings() { this.settingsModal.classList.add('show'); }
 
             closeSettingsModal() { this.settingsModal.classList.remove('show'); }
 
-            clearChat() {
-                if (confirm('Clear all chat history?')) {
-                    // Note: This only clears the frontend. The backend DB is not cleared.
-                    // A more robust solution would be a backend route to clear session history.
-                    this.messages = [];
-                    this.chatMessages.innerHTML = `
-                <div class="message bot-message" data-timestamp="Just now">
-                    <div class="message-bubble"><p>Chat cleared! Let's start fresh.</p></div>
+            async clearChat() {
+                this.closeSettingsModal();
+
+                try {
+                    const messages = this.chatMessages.querySelectorAll('.message');
+                    if (messages.length === 0) {
+                        return;
+                    }
+
+                    messages.forEach((msg, index) => {
+                        msg.style.animationDelay = `${index * 50}ms`;
+                        msg.classList.add('snapped');
+                    });
+
+                    const totalAnimationTime = (messages.length * 50) + 500;
+
+                    setTimeout(async () => {
+                        await fetch('/clear_history', { method: 'POST' });
+                        this.chatMessages.innerHTML = `
+                <div class="message bot-message">
+                   <div class="message-bubble"><p>Chat cleared! Let's start fresh.</p></div>
                 </div>`;
-                    this.closeSettingsModal();
+                    }, totalAnimationTime);
+
+                } catch (error) {
+                    console.error("Clear chat error:", error);
+                    alert("Could not clear chat history. Please try again.");
                 }
             }
         }
-
-        // --- MAIN APP CONTROLLER ---
+        // Main App Controller
         document.addEventListener('DOMContentLoaded', () => {
-            // Get references to the main page sections and buttons
             const loadingScreen = document.getElementById('loading-screen');
             const landingPage = document.getElementById('landing-page');
             const chatApp = document.getElementById('chat-app');
             const startChattingBtn = document.getElementById('startChattingBtn');
-            const darkModeToggles = document.querySelectorAll('.dark-mode-toggle');
+            const themeToggleBtns = document.querySelectorAll('.theme-toggle-btn');
 
-            // --- Page Navigation Functions ---
-
-            // Hides the loading screen and shows the landing page
             const showLandingPage = () => {
                 loadingScreen.style.display = 'none';
                 landingPage.style.display = 'block';
             };
 
             const showChatApp = (event) => {
-                event.preventDefault(); 
+                event.preventDefault();
                 landingPage.style.display = 'none';
-                chatApp.style.display = 'flex'; 
-                chat.scrollToBottom();
+                chatApp.style.display = 'flex';
+                document.getElementById('messageInput').focus();
             };
 
-            // --- Dark Mode Functionality ---
-
-            // Toggles the theme between light and dark
-            const toggleDarkMode = () => {
+            const toggleTheme = () => {
                 const currentTheme = document.documentElement.getAttribute('data-theme');
                 const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
                 document.documentElement.setAttribute('data-theme', newTheme);
                 localStorage.setItem('theme', newTheme);
-                // Update the icon on all toggle buttons
-                darkModeToggles.forEach(toggle => {
-                    toggle.querySelector('span').textContent = newTheme === 'dark' ? '☀️' : '🌙';
+                updateThemeIcons(newTheme);
+            };
+
+            const updateThemeIcons = (theme) => {
+                themeToggleBtns.forEach(btn => {
+                    btn.querySelector('span').textContent = theme === 'dark' ? '☀️' : '🌙';
                 });
             };
 
-            // Applies the saved theme from localStorage on page load
-            const applyTheme = () => {
+            const applyInitialTheme = () => {
                 const savedTheme = localStorage.getItem('theme') || 'light';
                 document.documentElement.setAttribute('data-theme', savedTheme);
-                darkModeToggles.forEach(toggle => {
-                    toggle.querySelector('span').textContent = savedTheme === 'dark' ? '☀️' : '🌙';
-                });
+                updateThemeIcons(savedTheme);
             };
 
-            // --- App Initialization ---
-
-            // 1. Create an instance of your NerdChat class
             const chat = new NerdChat();
 
-            // 2. Set up the event listener for the "Start Chatting" button
             startChattingBtn.addEventListener('click', showChatApp);
-
-            // 3. Set up event listeners for ALL dark mode toggle buttons
-            darkModeToggles.forEach(toggle => {
-                toggle.addEventListener('click', toggleDarkMode);
-            });
-
-
-            applyTheme();
+            themeToggleBtns.forEach(btn => btn.addEventListener('click', toggleTheme));
+            applyInitialTheme();
             setTimeout(showLandingPage, 500);
         });
     </script>
