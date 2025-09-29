@@ -11,8 +11,6 @@ from flask import Flask, request, jsonify, send_from_directory, session
 load_dotenv()
 
 # --- Configuration ---
-# IMPORTANT: You must set a SECRET_KEY in your .env file for sessions to work.
-# Example: SECRET_KEY = "a_very_strong_random_string_of_characters"
 SECRET_KEY = os.getenv("SECRET_KEY")
 GEMINI_API_KEY = os.getenv("GEMINI_API_KEY")
 
@@ -24,9 +22,9 @@ genai.configure(api_key=GEMINI_API_KEY)
 # System prompt for the public-facing chatbot
 SYSTEM_PROMPT = os.getenv("SYSTEM_PROMPT")
 
-model = genai.GenerativeModel("gemini-2.5-flash", system_instruction=SYSTEM_PROMPT)
+model = genai.GenerativeModel("Gemini 2.5 Flash-Lite", system_instruction=SYSTEM_PROMPT)
 
-# --- Database Setup (Copied from your main.py) ---
+# --- Database Setup ---
 DB_PATH = "chat_history.db"
 conn = sqlite3.connect(DB_PATH, check_same_thread=False)
 cur = conn.cursor()
@@ -105,7 +103,6 @@ def chat():
         ai_response = response.text
 
         # Save messages to the database
-        # You might want to store a placeholder for the image in the DB
         save_message(user_id, "user", user_message or "[Image Uploaded]")
         save_message(user_id, "model", ai_response)
 
@@ -116,4 +113,5 @@ def chat():
         return jsonify({'error': 'An error occurred while processing your request.'}), 500
 
 if __name__ == '__main__':
+
     app.run(port=5000, debug=True)
