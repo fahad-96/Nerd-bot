@@ -1,0 +1,90 @@
+<div id="auth-page">
+    <div class="auth-container">
+        <div class="auth-card">
+            <div class="auth-logo">
+                <span class="auth-logo-icon">🤓</span>
+                <span class="auth-logo-text">NerdChat</span>
+            </div>
+            
+            <!-- Sign In Form -->
+            <div id="signin-form">
+                <h2 class="auth-title">Welcome Back!</h2>
+                <p class="auth-subtitle">Sign in to continue chatting with your AI companions</p>
+                
+                <div id="auth-error" class="auth-error" style="display: none;"></div>
+                <div id="auth-success" class="auth-success" style="display: none;"></div>
+                
+                <form class="auth-form" id="signinForm">
+                    <div class="form-group">
+                        <label class="form-label" for="signin-email">Email</label>
+                        <input type="email" id="signin-email" class="form-input" placeholder="Enter your email" required>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label" for="signin-password">Password</label>
+                        <input type="password" id="signin-password" class="form-input" placeholder="Enter your password" required>
+                    </div>
+                    <button type="submit" class="auth-btn" id="signin-btn">
+                        <span>Sign In</span>
+                    </button>
+                </form>
+                
+                <div class="auth-divider">
+                    <span>or</span>
+                </div>
+                
+                <button class="auth-btn google-btn" id="google-signin-btn">
+                    <div class="google-icon"></div>
+                    <span>Continue with Google</span>
+                </button>
+                
+                <div class="auth-switch">
+                    Don't have an account? <a href="#" id="show-signup">Sign up</a>
+                </div>
+            </div>
+            
+            <!-- Sign Up Form -->
+            <div id="signup-form" style="display: none;">
+                <h2 class="auth-title">Join NerdChat!</h2>
+                <p class="auth-subtitle">Create your account to start chatting with AI experts</p>
+                
+                <div id="signup-error" class="auth-error" style="display: none;"></div>
+                <div id="signup-success" class="auth-success" style="display: none;"></div>
+                
+                <form class="auth-form" id="signupForm">
+                    <div class="form-group">
+                        <label class="form-label" for="signup-name">Full Name</label>
+                        <input type="text" id="signup-name" class="form-input" placeholder="Enter your full name" required>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label" for="signup-email">Email</label>
+                        <input type="email" id="signup-email" class="form-input" placeholder="Enter your email" required>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label" for="signup-password">Password</label>
+                        <input type="password" id="signup-password" class="form-input" placeholder="Create a password" required>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label" for="signup-confirm">Confirm Password</label>
+                        <input type="password" id="signup-confirm" class="form-input" placeholder="Confirm your password" required>
+                    </div>
+                    <button type="submit" class="auth-btn" id="signup-btn">
+                        <span>Create Account</span>
+                    </button>
+                </form>
+                
+                <div class="auth-divider">
+                    <span>or</span>
+                </div>
+                
+                <button class="auth-btn google-btn" id="google-signup-btn">
+                    <div class="google-icon"></div>
+                    <span>Sign up with Google</span>
+                </button>
+                
+                <div class="auth-switch">
+                    Already have an account? <a href="#" id="show-signin">Sign in</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

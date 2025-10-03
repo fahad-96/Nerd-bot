@@ -1,0 +1,45 @@
+<div id="error-modal" class="modal" style="display: none;">
+    <div class="modal-content">
+        <span class="close">&times;</span>
+        <div class="modal-header">
+            <h2>Error</h2>
+        </div>
+        <div class="modal-body">
+            <p id="error-message">An error occurred. Please try again.</p>
+        </div>
+        <div class="modal-footer">
+            <button class="btn btn-primary" onclick="closeErrorModal()">OK</button>
+        </div>
+    </div>
+</div>
+
+<div id="success-modal" class="modal" style="display: none;">
+    <div class="modal-content">
+        <span class="close">&times;</span>
+        <div class="modal-header">
+            <h2>Success</h2>
+        </div>
+        <div class="modal-body">
+            <p id="success-message">Operation completed successfully!</p>
+        </div>
+        <div class="modal-footer">
+            <button class="btn btn-primary" onclick="closeSuccessModal()">OK</button>
+        </div>
+    </div>
+</div>
+
+<div id="confirm-modal" class="modal" style="display: none;">
+    <div class="modal-content">
+        <span class="close">&times;</span>
+        <div class="modal-header">
+            <h2>Confirm Action</h2>
+        </div>
+        <div class="modal-body">
+            <p id="confirm-message">Are you sure you want to proceed?</p>
+        </div>
+        <div class="modal-footer">
+            <button class="btn btn-secondary" onclick="closeConfirmModal()">Cancel</button>
+            <button class="btn btn-danger" id="confirm-action-btn">Confirm</button>
+        </div>
+    </div>
+</div>

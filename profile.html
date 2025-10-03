@@ -1,0 +1,37 @@
+<div id="profile-page" style="display:none">
+  <nav class="navbar mobile-navbar">
+    <button class="back-btn" id="profile-back-btn" title="Back">
+      <span>←</span>
+    </button>
+    <div class="navbar-title">Account</div>
+    <div class="navbar-actions">
+      <button id="profile-signout-btn" class="icon-btn" title="Sign Out">🚪</button>
+    </div>
+  </nav>
+
+  <main class="profile-content">
+    <section class="profile-card">
+      <div class="profile-header">
+        <img id="profile-avatar" class="profile-avatar" alt="avatar" />
+        <div>
+          <div id="profile-name" class="profile-name"></div>
+          <div id="profile-email" class="profile-email"></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="profile-section">
+      <h3>Change Password</h3>
+      <form id="change-password-form" class="profile-form">
+        <input type="password" id="current-password" class="form-input" placeholder="Current password" required />
+        <input type="password" id="new-password" class="form-input" placeholder="New password (min 6 chars)" minlength="6" required />
+        <button type="submit" class="auth-btn">Update Password</button>
+      </form>
+    </section>
+
+    <section class="profile-section danger">
+      <h3>Danger Zone</h3>
+      <button id="delete-account-btn" class="danger-btn">Delete Account</button>
+    </section>
+  </main>
+</div>

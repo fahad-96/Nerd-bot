@@ -1,0 +1,110 @@
+<div id="landing-page">
+    <nav class="navbar navbar-shadow">
+        <div class="nav-left">
+            <button class="hamburger icon-btn" title="Menu" id="landing-menu-btn"><svg data-feather="menu"></svg></button>
+            <a href="#" class="brand">
+                <span class="logo-icon">🤓</span>
+                <span class="logo-text">NerdChat</span>
+            </a>
+        </div>
+        <div class="nav-center"></div>
+        <div class="nav-right"><!-- intentionally empty: actions live in drawer --></div>
+    </nav>
+
+    <!-- Slide-in Drawer Menu -->
+    <div id="drawer-overlay" class="drawer-overlay"></div>
+    <aside id="mobile-drawer" class="drawer">
+        <div class="drawer-header">
+            <div class="brand">
+                <span class="logo-icon">🤓</span>
+                <span class="logo-text">NerdChat</span>
+            </div>
+            <button id="drawer-close-btn" class="icon-btn" title="Close"><svg data-feather="x"></svg></button>
+        </div>
+        <div class="drawer-user">
+            <img id="drawer-avatar" class="drawer-avatar" alt="avatar" />
+            <div>
+                <div id="drawer-name" class="drawer-name"></div>
+                <div id="drawer-email" class="drawer-email"></div>
+            </div>
+        </div>
+        <div class="drawer-menu">
+            <button id="drawer-profile" class="drawer-item"><svg data-feather="user"></svg><span>Profile</span></button>
+            <button id="drawer-theme" class="drawer-item"><svg data-feather="moon"></svg><span>Toggle Theme</span></button>
+            <button id="drawer-signout" class="drawer-item"><svg data-feather="log-out"></svg><span>Sign Out</span></button>
+        </div>
+    </aside>
+    <main class="hero">
+        <h1 class="hero-title">Choose Your <span>AI Companion</span></h1>
+        <p class="hero-subtitle">
+            Select from our powerful AI models. Each one specialized for different tasks and conversations.
+        </p>
+        
+        <div class="models-container" id="modelsContainer">
+            <!-- Models will be dynamically loaded here -->
+        </div>
+
+        <section class="features-section">
+            <div class="features-grid">
+                <div class="feature-item">
+                    <div class="feature-icon-wrapper">
+                        <div class="feature-icon">🚀</div>
+                    </div>
+                    <div class="feature-content">
+                        <h3>Lightning Fast</h3>
+                        <p>Get instant responses powered by advanced AI technology. Our optimized infrastructure ensures minimal latency and maximum performance for all your conversations.</p>
+                    </div>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-icon-wrapper">
+                        <div class="feature-icon">🔒</div>
+                    </div>
+                    <div class="feature-content">
+                        <h3>Privacy First</h3>
+                        <p>Your conversations are secure and private. We implement end-to-end encryption and never store your personal data, ensuring complete confidentiality in every interaction.</p>
+                    </div>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-icon-wrapper">
+                        <div class="feature-icon">🎯</div>
+                    </div>
+                    <div class="feature-content">
+                        <h3>Specialized Models</h3>
+                        <p>Each AI is trained for specific tasks and expertise. From technical coding to medical advice, our models are fine-tuned to provide accurate, contextual responses in their domains.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="landing-footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h4>NerdChat</h4>
+                <p>Your intelligent AI companion for every conversation</p>
+            </div>
+            <div class="footer-section">
+                <h4>Features</h4>
+                <ul>
+                    <li>Multiple AI Models</li>
+                    <li>Image Analysis</li>
+                    <li>Code Assistance</li>
+                    <li>Dark/Light Theme</li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Support</h4>
+                <ul>
+                    <li>Help Center</li>
+                    <li>Privacy Policy</li>
+                    <li>Terms of Service</li>
+                    <li>Contact Us</li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 NerdChat. All rights reserved.</p>
+            <p class="made-with">Made with 🍌 by <a href="https://fahad-yousuf.netlify.app/" target="_blank" rel="noopener noreferrer">Nerd-Dev</a></p>
+        </div>
+    </footer>
+</div>

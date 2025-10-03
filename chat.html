@@ -1,0 +1,61 @@
+<div id="chat-page" style="display: none;">
+    <nav class="chat-navbar navbar-shadow">
+        <div class="nav-left">
+            <button class="back-btn icon-btn" title="Back to Models"><svg data-feather="arrow-left"></svg></button>
+            <div class="current-model-info">
+                <img id="current-model-avatar" src="" alt="" class="model-avatar">
+                <div>
+                    <div id="current-model-name" class="model-name"></div>
+                    <div id="current-model-status" class="model-status">Online</div>
+                </div>
+            </div>
+        </div>
+        <div class="nav-center"></div>
+        <div class="nav-right chat-actions">
+            <button id="muteBtn" class="icon-btn" title="Toggle Sound"><svg data-feather="volume-2"></svg></button>
+            <div class="dropdown">
+              <button id="chat-menu-btn" class="icon-btn" title="Menu"><svg data-feather="more-vertical"></svg></button>
+              <div id="chat-menu" class="dropdown-menu" style="display:none">
+                <button id="clear-chat-btn" class="dropdown-item">Clear Chat</button>
+              </div>
+            </div>
+        </div>
+    </nav>
+
+    <div class="chat-container">
+        <div id="chat-messages" class="chat-messages">
+            <div class="message model-message" id="initialMessage">
+                <div class="message-bubble">
+                    <p>Hey there! I'm NerdGirl. How can I help you today?</p>
+                    <div class="message-info">&nbsp;</div>
+                </div>
+            </div>
+        </div>
+        <div class="typing-indicator" id="typingIndicator" style="display: none;">
+            <div class="message model-message">
+                <div class="message-bubble">
+                    <div class="typing-dots"><span></span><span></span><span></span></div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="chat-input-container">
+            <div class="chat-input-wrapper">
+                <input type="text" id="user-input" class="chat-input" placeholder="Type your message..." maxlength="1000">
+                <input type="file" id="image-input" accept="image/*" style="display: none;">
+                <div class="chat-input-buttons">
+                    <button id="image-btn" class="icon-btn" title="Upload Image">
+                        <span>📎</span>
+                    </button>
+                    <button id="send-btn" class="icon-btn send-btn" title="Send Message">
+                        <span>➤</span>
+                    </button>
+                </div>
+            </div>
+            <div id="image-preview" class="image-preview" style="display: none;">
+                <img id="preview-img" src="" alt="Preview">
+                <button id="remove-image" class="remove-image-btn">&times;</button>
+            </div>
+        </div>
+    </div>
+</div>
